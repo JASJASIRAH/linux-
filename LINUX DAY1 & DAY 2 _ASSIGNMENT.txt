@@ -1,0 +1,278 @@
+                                                          LINUX ASSINMENT DAY1 & DAY2
+
+
+
+--------SLIDE  41:-----------
+
+1. Create folder 'Test' in your home directory
+
+--> mkdir test
+ 
+2.)Create below files​
+
+  - employeelist​
+
+  - skillset​
+
+-->cat >employeelist
+   cat >skillset
+
+3.)Create folder Test2 in home directory​
+
+  - create symbolink and hard link for skillset file ​
+
+  - delete skillset file and check if hardlink and symbolic link file exists​
+
+  - explain the difference b/n symbolic and hard links​
+
+--->   mkdir test2
+   cat >skillset
+   ln -s skillset slink
+   ln skillset hlinks
+   
+--> slinks file is not exected in the directory after deleting skillset,but hlinks file is there with skillset data.
+
+4.)Provide read and write permission to 'user2' group​
+ test if user2 group users can access the file​
+--->sudo chgrp user2 filename
+
+5.)Revoke write permission from user2 group and test the access again​
+
+  --->chmod 744 file
+
+6. Grant write permission for others and test it ​
+--->chmod o+w filename
+
+ 7. Revoke write permission for others and test again​
+  ---> chmod o-r filename
+
+8. Change the group of employeelist file to 'user3'​
+
+   test if user3 group have access​
+---> chgrp user3 employelists
+
+9.) Change ownership of the file to user5 and test​
+
+---->chown user5 employelist
+
+10.)check how many employees are there  (hint: use wc command)​
+---->wc employelist
+
+------SLIDE 47:-------------------
+
+1) Create file “File1”​
+--->cat >file1 
+
+2) Append 2 more lines to the same file​
+--->cat >>file1
+
+3)Append 2 more lines to the same file​
+---> cat >file2
+
+4)Display the contents of both File1 and File2​
+--->  cat file1 file2
+
+5) Concatenate both File1 & 2​
+---> cat file1 file2
+
+6) Send the above output to File3​
+---> cat file1 file2 > file3
+
+7)Read File1,File2,File3… File5 . Observe the output​
+--->  cat file1 file2 file3 file4 file5
+
+8)Redirect the errors of the above command to “errorlog”​
+--->  cat file1 file2 file3 file4 file5 2>errorlog
+
+9) Concatenate name File1 to 5 and store it in File 10. if any errors, log them in the same file ​
+---> cat file1 file5 >file10 2>file10
+
+10)Copy File1 to File6. Add the errors to “errorlog”​
+ --->cp file1 file6 2>errorlog
+
+---------SLIDE 55:-------------
+
+1)The 10th to 25th  lines in a file​
+--->tail +10 file | head -16
+
+2)List only 10th line in a file​
+
+--->tail +10 file | head -1
+
+3)List only the recently modified file in the current directory​
+find  -type f -mtime -1
+--->ls -1t | head -5
+
+4)List only the smallest file in the current directory​
+--->ls -lsr | head -5
+
+5)A data file is updated regularly, each day with 10 new records. New records are appended at the end. ​
+ Write the command to print total number of records in the file.​
+--->wc -l file
+
+6)Write the command to list only the records entered 3 days before. 
+find -type f -mtime -3 
+--->ls -l | grep "$(date +"%b %e")"
+
+-------SLIDE 61:----------
+
+1)Lines containing A​
+--->grep -i [A] file
+
+2)lines containing The at the beginning​
+--->grep '[A]' file
+
+3)lines  ending with  
+--->grep '$[.]' file
+
+4)lines with a,b or c as the second letter​
+--->grep -ni '[?abc]*' f32
+
+5)lines which contain def , deef or deeeef ​
+
+--->cat file1 | grep "def\|deef\|deeef"
+
+6)lines not having numbers at the beginning ​
+
+--->cat file1 | grep -v '^[0-9]'
+
+7)cat file1 | grep -n "^$"
+
+8)list only directories​
+--->ls -d
+
+9)empty lines
+  --->grep-c '^$' flist
+
+----SLIDE 64:-----------
+
+1) Create a file which contains long listing of the files in root directory​
+--->ls -l 
+ls-l ../../root>longlistfile
+
+2)Sort the file based on the filename descending order (last field)​
+--->ls | sort -r
+
+3)Sort the file based only on the inode count​
+--->ls -li
+sort -n+1 Longlist
+
+4)Sort the file based on the user name and group name in reverse order​
+--->ls -r
+
+5)Sort the file based on the file size and store the output in a file called sortedfile​
+--->ls -s >sortedfile
+
+-----SLIDE 67:---------
+
+1)Convert all capital letters into small letters in file​
+--->echo SONATA | tr [:upper:] [:lower:]
+
+2)Remove all occurrences of numbers in file​
+--->sed -i 's/^[0-9].*$//g' file
+
+3)remove all occurrences of spaces in a file​
+--->cat f1 | sed 's/ //g' file
+
+4)count the number of alphabets in the file​
+--->-o [[:alpha:]] filename | wc -l
+
+5)count the occurrences of ovals in the given file​
+
+--->grep -o [aeiouAEIOU] file | wc -l
+
+-----------SLIDE 95:------------
+
+1. Insert an heading at the beginning of the file​
+----> vi file1
+      i button
+      home button
+
+2 Remove the second line in the file and try undo  command​
+ ---->dd on second line
+     u will restore back
+
+3 Search for all occurrences of bc ​
+---->/bc
+
+4 Remove the word number​
+---->dw
+
+5 Replace all occurrences of char c in line1 only with C​
+----->:%s/c/C
+:1s/c/C
+
+6 Replace all occurrences of space with \t	​
+----->:%s/ /\t  
+
+7. copy line 1 to 3 and paste at the end of the file​
+----->3yy copy the 1st 3 line
+p is used for pasting
+
+8. delete last 3 lines​
+----->-3,$d
+3dd
+
+9. undo last 2 changes​
+------> uu it will restore last 2 changes
+u twice
+
+10. save your file as “bc_v2”​
+------>w bc_v2
+
+-------------SLIDE 116:----------------------
+
+
+1)Run a sort command of a large file at the background
+	sleep 100&
+	ps-l
+
+-->ls -l | sort >file1&
+
+2)Write a command which will print banner saying hello 
+into a file about 3 minutes from now
+	at now + 3 minute
+	echo "hello" >f1
+
+
+2)Write a command that sleeps for 5 seconds and then prints hello
+	sleep 5s
+	echo "hello"
+
+
+3)Run a sort command of a large file at the background using nohup
+---->	nohup sleep 100&	
+	ps -l
+--->nohup ls -l | sort >file1&
+
+
+--------------SLIDE 118------------------
+
+1)Write a command which will print banner saying hello 
+into a file about 3 minutes from now
+	at now + 3 minute
+	echo "hello" >f1
+
+2)Write the command to write the processes that will be 
+running after 10 days into a file ‘processfile’
+	at now + 10 day
+	at -l >processfile
+
+3)Write the command to send birthday wishes to your friend, whose birthday is tomorrow
+	echo "happy birthday" | at now +1 day
+
+------------SLIDE 120----------------------
+
+Try the commands done with at using crontab
+crontab [to schedule meeting]
+* * * * * >file1[scheduled meet which will create file1 every minute]
+crontab -l	(to check previous scheduled meeting)
+at now +1 minute(schedule meeting)
+sleep 100&(scheduled meeting)
+at -l		(to see scheduled meet)
+at -r mno(2)	(remove )
+	
+
+
+
+
