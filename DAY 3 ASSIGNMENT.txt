@@ -141,12 +141,10 @@ the user and prints the score at the end)
 	fi
 
 	echo "the total score is $point"
-	
 
 -------------------------------------------------------
-
-
 slide 169
+
 1.Accept a set of arguments from the user and find the 
 largest of them.
 
@@ -223,12 +221,11 @@ somewhere before deleting.
 	cp $a $b
 	rm $a
 	cat $b
-
 --------------------------------------------------------------------------
-slide 186
+slide 184
 
-1.Write a function which will accept a filename and finds the number of line having at least one vowel in the file. If none of lines contains vowel, it exits with error.
-Filename is passed as argument
+1.Write a function which will accept a filename and finds the number of line having at least one vowel in the file. 
+If none of lines contains vowel, it exits with error.Filename is passed as argument
 filename=$1
 echo "Number of words with vowels"
 while read line; do
