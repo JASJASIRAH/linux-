@@ -164,10 +164,7 @@ largest of them.
 	   fi
 	   i=$((i+1))
 	done
-	echo "the largest num is $num"
-	:wq
 
-	bash large
 ------------------------------------------------
 
 2.Accept numbers from the user till 0 is passed and add 
